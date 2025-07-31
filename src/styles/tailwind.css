@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Global Background Colors */
+    --global-background1: #0000000c;
+    --global-background2: #371257;
+    --global-background3: #371257b3;
+    --global-background4: #bbbbbb26;
+    --global-background5: #ef3e25;
+    --global-background6: #f5f5f5;
+    --global-background7: #f8f8f8;
+    --global-background8: #f8f9fc;
+    --global-background9: #fdffff;
+    --global-background10: #ffe0db;
+    --global-background11: #ffffff;
+
+    /* Global Text Colors */
+    --global-text1: #000000;
+    --global-text2: #001122;
+    --global-text3: #070707;
+    --global-text4: #0f1728;
+    --global-text5: #101010;
+    --global-text6: #101010b2;
+    --global-text7: #101828;
+    --global-text8: #333333;
+    --global-text9: #371257;
+    --global-text10: #3b3b3b;
+    --global-text11: #5f248e;
+    --global-text12: #6f00e6;
+    --global-text13: #999999;
+    --global-text14: #9ca3bd;
+    --global-text15: #ef3e25;
+    --global-text16: #ff5900;
+    --global-text17: #ffffff;
+    --global-text18: #fffffffc;
+
+    /* Button Colors */
+    --button-background1: #5d248f;
+
+    /* EditText Colors */
+    --edittext-border1: #88888819;
+  }
+}
+
+@layer utilities {
+  /* Global Background */
+  .bg-global-1 { background-color: var(--global-background1); }
+  .bg-global-2 { background-color: var(--global-background2); }
+  .bg-global-3 { background-color: var(--global-background3); }
+  .bg-global-4 { background-color: var(--global-background4); }
+  .bg-global-5 { background-color: var(--global-background5); }
+  .bg-global-6 { background-color: var(--global-background6); }
+  .bg-global-7 { background-color: var(--global-background7); }
+  .bg-global-8 { background-color: var(--global-background8); }
+  .bg-global-9 { background-color: var(--global-background9); }
+  .bg-global-10 { background-color: var(--global-background10); }
+  .bg-global-11 { background-color: var(--global-background11); }
+
+  /* Global Text */
+  .text-global-1 { color: var(--global-text1); }
+  .text-global-2 { color: var(--global-text2); }
+  .text-global-3 { color: var(--global-text3); }
+  .text-global-4 { color: var(--global-text4); }
+  .text-global-5 { color: var(--global-text5); }
+  .text-global-6 { color: var(--global-text6); }
+  .text-global-7 { color: var(--global-text7); }
+  .text-global-8 { color: var(--global-text8); }
+  .text-global-9 { color: var(--global-text9); }
+  .text-global-10 { color: var(--global-text10); }
+  .text-global-11 { color: var(--global-text11); }
+  .text-global-12 { color: var(--global-text12); }
+  .text-global-13 { color: var(--global-text13); }
+  .text-global-14 { color: var(--global-text14); }
+  .text-global-15 { color: var(--global-text15); }
+  .text-global-16 { color: var(--global-text16); }
+  .text-global-17 { color: var(--global-text17); }
+  .text-global-18 { color: var(--global-text18); }
+
+  /* Button */
+  .bg-button-1 { background-color: var(--button-background1); }
+
+  /* EditText */
+  .border-edittext-1 { border-color: var(--edittext-border1); }
+
+  /* Utility Classes for Better Layout */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Font Family Extensions */
+.font-plus-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+.font-poppins { font-family: 'Poppins', sans-serif; }
+.font-inter { font-family: 'Inter', sans-serif; }
+.font-be-vietnam { font-family: 'Be Vietnam Pro', sans-serif; }
+
+/* Enhanced Animations and Transitions */
+@layer components {
+  .transition-all {
+    transition: all 0.3s ease;
+  }
+  
+  .hover\:scale-110:hover {
+    transform: scale(1.1);
+  }
+  
+  .section-padding {
+    @apply py-16 lg:py-24;
+  }
+  
+  .container-responsive {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
