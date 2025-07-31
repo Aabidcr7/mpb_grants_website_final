@@ -897,59 +897,100 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl lg:text-5xl font-poppins font-medium leading-tight">
-              <span className="text-global-15">Still not convinced?<br /></span>
-              <span className="text-global-4">We have got the answers</span>
-            </h2>
+           <h2
+  className="text-3xl lg:text-5xl font-poppins font-medium leading-tight"
+  style={{ letterSpacing: '-2px' }}
+>
+  <span className="text-global-15">Still not convinced?<br /></span>
+  <span className="text-global-4">We have got the answers</span>
+</h2>
+
           </motion.div>
           
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="space-y-6"
-          >
-            {faqData.map((question, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                className={`border-b border-gray-200 pb-6 ${selectedFaq === index ? 'bg-global-6 rounded-2xl p-6 -mb-6' : ''}`}
-              >
-                <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleFaq(index)}>
-                  <p className="text-lg font-be-vietnam font-medium text-global-4 pr-4">
-                    {question}
-                  </p>
-                  <button className="flex-shrink-0">
-                    <img 
-                      src="/images/img_plus.png" 
-                      alt="Toggle FAQ" 
-                      className={`w-5 h-5 transition-transform ${selectedFaq === index ? 'rotate-45' : ''}`}
-                    />
-                  </button>
-                </div>
-                {selectedFaq === index && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="mt-4 text-global-6 font-be-vietnam"
-                  >
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  </motion.div>
-                )}
-              </motion.div>
-            ))}
-            
-            <div className="text-center pt-8">
-              <p className="text-lg font-be-vietnam font-medium text-global-4">
-                Still have more questions? Contact us on 
-                <span className="text-global-16">Whatsapp</span>.
-              </p>
-            </div>
-          </motion.div>
+       <motion.div
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  transition={{ delay: 0.3, duration: 0.8 }}
+  className="space-y-6"
+>
+  {faqData.map((question, index) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1, duration: 0.6 }}
+      className={`border-b border-gray-200 pb-6 ${selectedFaq === index ? 'bg-global-6 rounded-2xl p-6 -mb-6' : ''}`}
+    >
+      <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleFaq(index)}>
+        <p className="text-lg font-be-vietnam font-medium text-global-4 pr-4">
+          {question}
+        </p>
+        <button className="flex-shrink-0">
+          <img 
+            src="/images/img_plus.png" 
+            alt="Toggle FAQ" 
+            className={`w-5 h-5 transition-transform ${selectedFaq === index ? 'rotate-45' : ''}`}
+          />
+        </button>
+      </div>
+      {selectedFaq === index && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.3 }}
+          className="mt-4 text-global-6 font-be-vietnam space-y-3"
+        >
+          {index === 0 && (
+            <>
+              <p><strong>1. Identifying Suitable Grants:</strong> The initial step of the grant process involves identifying suitable grant opportunities that align with the goals, objectives, and mission of the applicant. This involves conducting thorough research to locate potential grants from government agencies, foundations, corporations, or other funding organizations.</p>
+              <p><strong>2. Developing a Strong Proposal:</strong> Once suitable grants have been identified, the next step is to develop a compelling grant proposal. This document typically includes an introduction to the applicant, a statement of need, a detailed description of the project or initiative, a budget breakdown, and a plan for evaluating the project's success.</p>
+              <p><strong>3. Submitting the Application:</strong> The completed grant proposal must be submitted to the funding organization or agency before the specified deadline. This may involve submitting the application online, through the mail, or through other designated channels.</p>
+              <p><strong>4. Undergoing Review:</strong> After the grant application has been submitted, it undergoes a review process conducted by a panel of experts or a grant review committee. The reviewers assess the proposal's merit, feasibility, and potential impact.</p>
+              <p><strong>5. Receiving Notification of the Decision:</strong> Once the review process is complete, the applicant is notified of the funding decision. This may include receiving a grant award or being placed on a waitlist.</p>
+              <p><strong>6. Negotiating and Signing a Grant Agreement:</strong> If the grant is awarded, the applicant and the funding organization engage in negotiations to finalize the terms and conditions of the grant agreement. This agreement outlines the specific requirements, deliverables, and reporting obligations associated with the grant.</p>
+              <p><strong>7. Providing Regular Grant Progress Reports:</strong> Throughout the grant period, the recipient is required to submit regular progress reports to the funding organization. These reports provide updates on the project's status, accomplishments, and any challenges encountered. They serve to ensure that the grant is being utilized effectively and in accordance with the agreed-upon terms.</p>
+              <p><strong>8. Maintaining Compliance and Accountability:</strong> The grant recipient must maintain compliance with all applicable laws, regulations, and reporting requirements throughout the grant period. This includes adhering to financial and ethical standards and ensuring that the project is conducted ethically and responsibly.</p>
+              <p><strong>9. Grant Closeout:</strong> At the conclusion of the grant period, the recipient is required to submit a final report summarizing the project's outcomes and achievements. This report serves as a valuable resource for the funding organization in assessing the impact of the grant and evaluating future funding decisions.</p>
+            </>
+          )}
+          {index === 1 && (
+            <p>The grant size ranges from 1 lakh to 7 crores, depending on factors like the business sector that the business idea/startup is in, the granting agency, type of grant, project scope, and geographic location.</p>
+          )}
+          {index === 2 && (
+            <>
+              <p>There's no charge for our experts to give you advice and help you build a strong case for the grant.</p>
+              <p>If you want to get your hands on the comprehensive grant report, it'll cost you a small fee of 2,499 rupees.</p>
+            </>
+          )}
+          {index === 3 && (
+            <p>It's a guide to the top 5 grants that are a perfect match for your venture's goals. We've picked the best ones and given you the lowdown on their average deal sizes, application process, and documents you need to include. Plus, we've got their contact details so you can reach out directly.</p>
+          )}
+          {index === 4 && (
+            <>
+              <p>Our venture advisors can assist you with a variety of tasks, including:</p>
+              <ul className="list-disc pl-5">
+                <li>Business planning</li>
+                <li>Product development</li>
+                <li>Marketing and sales</li>
+                <li>Fundraising (Grants/ Equity-based fundraising from VCs and Angel Investors)</li>
+                <li>Exit strategies</li>
+              </ul>
+              <p>We can also provide mentorship and support to your team, and help you to develop a network of advisors, investors, and other resources.</p>
+            </>
+          )}
+        </motion.div>
+      )}
+    </motion.div>
+  ))}
+
+  <div className="text-center pt-8">
+    <p className="text-lg font-be-vietnam font-medium text-global-4">
+      Still have more questions? Contact us on <span className="text-global-16">Whatsapp</span>.
+    </p>
+  </div>
+</motion.div>
+
         </div>
       </motion.section>
 
