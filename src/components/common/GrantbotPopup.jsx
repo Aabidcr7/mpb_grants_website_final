@@ -7,17 +7,11 @@ import React, { useState, useEffect } from 'react';
           const [showPopup, setShowPopup] = useState(false);
 
           useEffect(() => {
-            // Show popup on page refresh/load
-            const hasSeenPopup = sessionStorage.getItem('grantbot-popup-seen');
-            
-            if (!hasSeenPopup) {
-              const timer = setTimeout(() => {
-                setShowPopup(true);
-                sessionStorage.setItem('grantbot-popup-seen', 'true');
-              }, 1000); // Show after 1 second
-
-              return () => clearTimeout(timer);
-            }
+            // Always show popup on every refresh after 1 second
+            const timer = setTimeout(() => {
+              setShowPopup(true);
+            }, 1000);
+            return () => clearTimeout(timer);
           }, []);
 
           const handleClose = () => {
@@ -40,7 +34,7 @@ import React, { useState, useEffect } from 'react';
                   transition={{ delay: 0.2, type: "spring", stiffness: 300 }}
                   className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-global-5 to-red-600 rounded-full mb-6"
                 >
-                  <span className="text-3xl text-white">🚀</span>
+                  <span className="text-3xl text-white">🤖</span>
                 </motion.div>
 
                 {/* Title */}
@@ -70,12 +64,13 @@ import React, { useState, useEffect } from 'react';
                   transition={{ delay: 0.5 }}
                   className="space-y-4"
                 >
+                  <a href="/chatbot" rel="noopener noreferrer"> 
                   <Button
                     onClick={handleAskGrantbot}
                     className="w-full bg-gradient-to-r from-global-5 to-red-600 text-white font-poppins font-bold py-4 px-8 rounded-xl text-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 shadow-lg"
                   >
                     Ask Grantbot
-                  </Button>
+                  </Button> </a>
                   
                   <button
                     onClick={handleClose}

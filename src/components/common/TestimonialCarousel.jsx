@@ -53,8 +53,8 @@ import React, { useState, useEffect } from 'react';
           }, [testimonials.length]);
 
           return (
-            <div className="relative max-w-6xl mx-auto">
-              <div className="overflow-hidden">
+            <div className="relative max-w-6xl mx-auto overflow-hidden">
+              <div className="overflow-hidden rounded-[1.7rem]">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentIndex}

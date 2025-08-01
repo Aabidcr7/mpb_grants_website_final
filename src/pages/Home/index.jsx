@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import Button from '../../components/ui/Button';
 import EditText from '../../components/ui/EditText';
+import ContactForm from '../../components/common/ContactForm';
+import GetStartedPopup from '../../components/common/GetStartedPopup';
 import GrantbotPopup from '../../components/common/GrantbotPopup';
 import TestimonialCarousel from '../../components/common/TestimonialCarousel';
 
@@ -116,224 +118,143 @@ const Home = () => {
   const blogAnimation = useScrollAnimation('fadeLeft');
   const ctaAnimation = useScrollAnimation('slideDown');
 
+  const [showGetStarted, setShowGetStarted] = useState(false);
   return (
     <div className="w-full">
-      {/* Grantbot Popup */}
       <GrantbotPopup />
+      {showGetStarted && <GetStartedPopup onClose={() => setShowGetStarted(false)} />}
 
       {/* Hero Section - Redesigned */}
-      <motion.section
-        ref={heroAnimation.ref}
-        initial="hidden"
-        animate={heroAnimation.controls}
-        variants={heroAnimation.animations}
-        transition={{ duration: 0.8 }}
-        className="relative w-full min-h-screen bg-gradient-to-br from-white via-gray-50 to-orange-50 overflow-hidden"
+    <motion.section
+  ref={heroAnimation.ref}
+  initial="hidden"
+  animate={heroAnimation.controls}
+  variants={heroAnimation.animations}
+  transition={{ duration: 0.8 }}
+  className="relative w-full min-h-screen bg-gradient-to-br from-white via-gray-50 to-orange-50 overflow-hidden"
+>
+  {/* Background Pattern */}
+  <div className="absolute inset-0 opacity-10">
+    <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur-3xl"></div>
+    <div className="absolute bottom-40 right-20 w-40 h-40 bg-gradient-to-r from-orange-400 to-red-400 rounded-full blur-3xl"></div>
+    <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full blur-2xl"></div>
+  </div>
+
+  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-start">
+      {/* Left Content */}
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.3, duration: 0.8 }}
+        className="relative z-10 pt-4 sm:pt-8 text-center lg:text-left items-center lg:items-start flex flex-col"
       >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-40 right-20 w-40 h-40 bg-gradient-to-r from-orange-400 to-red-400 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full blur-2xl"></div>
-        </div>
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            {/* Left Content */}
+        {/* Update Badge */}
+        <motion.div
+  initial={{ opacity: 0, y: -20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.5 }}
+  className="inline-flex items-center gap-2 bg-white border border-orange-200 rounded-full px-4 py-2 mb-8 shadow-md"
+>
+  <span className="bg-global-5 text-white text-xs font-semibold px-3 py-1 rounded-full">
+    UPDATE
+  </span>
+  <span className="text-global-4 text-xs font-medium">
+    205 Grants and Schemes are currently active
+  </span>
+  <img
+    src="/images/img_arrow_right.svg"
+    alt="Arrow"
+    className="w-3 h-3 opacity-70"
+  />
+</motion.div>
+
+
+        {/* Main Heading */}
+        <div className="mb-2 sm:mb-8">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.8 }}
+            className="text-5xl sm:text-6xl lg:text-7xl font-poppins font-medium leading-[0.9] text-global-4 mb-6 tracking-[-3px]"
+          >
+            Know the top<br />
+            Grants for your <br />
+            <span className="text-global-15">
+              <motion.span
+                key={currentWord}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="bg-gradient-to-r from-global-15 to-orange-600 bg-clip-text text-global-15"
+              >
+                {currentWord}
+              </motion.span>
+            </span>
+          </motion.h1>
+
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="relative z-10 pt-8"
-            >
-              {/* Update Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="inline-flex items-center gap-3 bg-white border-2 border-orange-200 rounded-full px-6 py-3 mb-12 shadow-lg"
-              >
-                <span className="bg-global-5 text-white text-sm font-bold px-4 py-1.5 rounded-full">
-                  UPDATE
-                </span>
-                <span className="text-global-4 text-sm font-semibold">
-                  205 Grants and Schemes are currently active
-                </span>
-                <img 
-                  src="/images/img_arrow_right.svg" 
-                  alt="Arrow" 
-                  className="w-4 h-4 opacity-70"
-                />
-              </motion.div>
-
-              {/* Main Heading */}
-              <div className="mb-12">
-                <motion.h1
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7, duration: 0.8 }}
-                  className="text-5xl sm:text-6xl lg:text-7xl font-poppins font-medium leading-[0.9] text-global-4 mb-6 tracking-[-3px]"
-                >
-                  Know the top<br />
-                  Grants for your <br />
-                  <span className="text-global-15"> <motion.span 
-                    key={currentWord}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.5 }}
-                    className="bg-gradient-to-r from-global-15 to-orange-600 bg-clip-text text-global-15"
-                  >
-                    {currentWord}
-                  </motion.span></span>
-                </motion.h1>
-                
-                {/* Image between text sections */}
-               
-                
-               
-              </div>
-
-              {/* Customer Social Proof */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.1, duration: 0.8 }}
-                className="mb-16"
-              >
-                
-                <div className="flex items-center gap-6 mb-4">
-
-                <div className="flex flex-row justify-center items-center">
-                  <div className="flex flex-row justify-center items-center">
-                    <img
-                      src="/images/4.png"
-                      alt="User Avatar 1"
-                      className="w-[38px] h-[38px] rounded-[18px] border-2 border-white"
-                    />
-                    <img
-                      src="/images/5.png"
-                      alt="User Avatar 2"
-                      className="w-[38px] h-[38px] rounded-[18px] border-2 border-white -ml-2"
-                    />
-                  </div>
-                  <img
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.1, duration: 0.8 }}
+          className="mb-4 sm:mb-8"
+        >
+          <div className="flex items-center gap-6 mb-4 justify-center lg:justify-start">
+            <div className="flex flex-row justify-center items-center">
+              <img
+                src="/images/4.png"
+                alt="User Avatar 1"
+                className="w-[38px] h-[38px] rounded-[18px] border-2 border-white"
+              />
+              <img
+                src="/images/15.png"
+                alt="User Avatar 2"
+                className="w-[38px] h-[38px] rounded-[18px] border-2 border-white -ml-2"
+              />
+              <img
                 src="/images/6.png"
-                    alt="User Avatar 3"
-                    className="w-[38px] h-[38px] rounded-[18px] border-2 border-white -ml-2"
-                  />
-                   <img
+                alt="User Avatar 3"
+                className="w-[38px] h-[38px] rounded-[18px] border-2 border-white -ml-2"
+              />
+              <img
                 src="/images/7.png"
-                    alt="User Avatar 3"
-                    className="w-[38px] h-[38px] rounded-[18px] border-2 border-white -ml-2"
-                  />
-                </div>
+                alt="User Avatar 4"
+                className="w-[38px] h-[38px] rounded-[18px] border-2 border-white -ml-2"
+              />
+            </div>
 
-                
-                  <div className="flex items-center gap-2">
-                    <img 
-                      src="/images/img_stars.svg" 
-                      alt="5 star rating" 
-                      className="w-28 h-6"
-                    />
-                    <span className="text-lg font-poppins font-semibold text-global-4">(4.9)</span>
-                  </div>
-                </div>
-                <p className="text-xl font-poppins font-medium text-global-6 italic">
-                  Trusted by 17,000+ happy entrepreneurs
-                </p>
-              </motion.div>
-
-              {/* Decorative Graphics */}
-              
-            </motion.div>
-
-            {/* Right Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="relative lg:pt-16"
-            >
-              {/* Background Decorations */}
-              <div className="absolute -top-8 -right-8 w-72 h-56 ">
-                <img 
-                  src="/images/img_link_scribble_2.png" 
-                  alt="Decorative scribble" 
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div className="absolute -bottom-16 -right-12 w-80 h-56 ">
-                <img 
-                  src="/images/img_scribble_1_design.png" 
-                  alt="Decorative design" 
-                  className="w-full h-full object-contain"
-                />
-              </div>
-
-              <div className="relative bg-white rounded-3xl p-10 shadow-2xl border border-gray-100 backdrop-blur-sm">
-                <div className="text-center mb-10">
-                  <h3 className="text-3xl lg:text-4xl font-poppins font-bold text-global-4 mb-3">
-                    Talk to our Experts
-                  </h3>
-                  <p className="text-xl font-poppins text-global-6">
-                    Know the right grants for <span className="font-bold text-global-15 text-2xl">FREE</span>
-                  </p>
-                </div>
-
-                {/* Form Fields */}
-                <div className="space-y-8">
-                  {/* Name Fields */}
-                  <div>
-                    <label className="block text-base font-poppins font-semibold text-global-4 mb-3">
-                      Full Name *
-                    </label>
-                    <div className="grid grid-cols-2 gap-4">
-                      <EditText placeholder="First Name" className="h-14" />
-                      <EditText placeholder="Last Name" className="h-14" />
-                    </div>
-                  </div>
-
-                  {/* Email Field */}
-                  <div>
-                    <label className="block text-base font-poppins font-semibold text-global-4 mb-3">
-                      Email Address *
-                    </label>
-                    <EditText placeholder="your.email@example.com" className="h-14" />
-                  </div>
-
-                  {/* Phone Field */}
-                  <div>
-                    <label className="block text-base font-poppins font-semibold text-global-4 mb-3">
-                      Phone Number *
-                    </label>
-                    <EditText placeholder="+1 (555) 000-0000" className="h-14" />
-                  </div>
-
-                  {/* Submit Button */}
-                  <Button className="w-full bg-gradient-to-r from-global-5 to-red-600 text-white font-poppins font-bold py-4 px-8 rounded-xl text-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 shadow-lg">
-                    Get Free Consultation →
-                  </Button>
-
-                  {/* Privacy Policy */}
-                  <div className="text-center text-sm text-global-6 leading-relaxed">
-                    <span>By submitting, you agree to our </span>
-                    <a href="#" className="text-global-15 underline hover:text-red-600">Privacy Policy</a>
-                    <span> and </span>
-                    <a href="#" className="text-global-15 underline hover:text-red-600">Terms of Service</a>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+            <div className="flex items-center gap-2">
+              <img
+                src="/images/img_stars.svg"
+                alt="5 star rating"
+                className="w-28 h-6"
+              />
+              <span className="text-lg font-poppins font-semibold text-global-4">(4.9)</span>
+            </div>
           </div>
+          <p className="text-xl font-poppins font-medium text-global-6 italic">
+            Trusted by 17,000+ happy entrepreneurs
+          </p>
+        </motion.div>
         </div>
-      </motion.section>
+
+        {/* Customer Social Proof */}
+      
+      </motion.div>
+
+      {/* Right Form */}
+      <ContactForm />
+    </div>
+  </div>
+</motion.section>
+
 
    {/* Featured In Section */}
   <motion.section
          initial={{ opacity: 1 }}
          animate={{ opacity: 1 }}
-         className="bg-white py-16 overflow-hidden"
+         className="bg-white py-8 overflow-hidden"
        >
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <motion.h2
@@ -346,9 +267,9 @@ const Home = () => {
            <motion.div
              initial={{ opacity: 1 }}
              animate={{ opacity: 1 }}
-             className="relative"
+             className="relative overflow-hidden w-full"
            >
-             <div className="flex animate-marquee items-center gap-8 lg:gap-12">
+             <div className="flex animate-marquee items-center gap-8 lg:gap-12 w-full">
                <img src="/images/img_item_link_moe_logo.png" alt="MOE Logo" className="h-16 lg:h-20 w-auto" />
                <img src="/images/img_item_link_without_year_04.png" alt="Partner logo" className="h-16 lg:h-20 w-auto" />
                <img src="/images/img_item_link_i.png" alt="Partner logo" className="h-24 lg:h-28 w-auto" />
@@ -405,7 +326,7 @@ const Home = () => {
               </h2>
               <div className="relative flex items-center justify-center">
                 {/* Background speech bubble */}
-                <div className="absolute w-24 h-20 bg-pink-200 opacity-60 rounded-2xl transform translate-x-1 translate-y-1"></div>
+               
                 {/* Main speech bubble with video camera */}
                 <div className="relative w-20 h-16 bg-gradient-to-br from-orange-400 to-pink-500 rounded-2xl shadow-lg flex items-center justify-center">
                   <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -422,10 +343,13 @@ const Home = () => {
             </h3>
             
             <div className="max-w-2xl mx-auto mb-12">
-              <p className="text-xl font-poppins text-global-6 leading-relaxed mb-8">
+              <p className="text-base sm:text-xl font-poppins text-global-6 leading-relaxed mb-8">
                 Join forces with our experienced grant specialists and turn your business ideas into funded realities through personalized guidance and expert insights.
               </p>
-              <Button className="bg-gradient-to-r from-global-2 to-purple-700 text-white font-poppins font-bold px-10 py-4 rounded-2xl text-lg hover:from-purple-700 hover:to-purple-800 transition-all duration-300 shadow-xl">
+              <Button
+                className="bg-gradient-to-r from-global-2 to-purple-700 text-white font-poppins font-bold px-10 py-4 rounded-2xl text-lg hover:from-purple-700 hover:to-purple-800 transition-all duration-300 shadow-xl"
+                onClick={() => setShowGetStarted(true)}
+              >
                 Work with our Expert Team →
               </Button>
             </div>
@@ -447,8 +371,8 @@ const Home = () => {
             </div>
             
             {/* Floating Elements */}
-            <div className="absolute -top-8 -left-8 w-16 h-16 bg-gradient-to-br from-orange-400 to-red-400 rounded-full shadow-lg animate-bounce"></div>
-            <div className="absolute -bottom-8 -right-8 w-20 h-20 bg-gradient-to-br from-purple-400 to-blue-400 rounded-full shadow-lg animate-pulse"></div>
+            <div className="absolute -top-8 left-0 w-10 h-10 lg:w-16 lg:h-16 bg-gradient-to-br from-orange-400 to-red-400 rounded-full shadow-lg animate-bounce overflow-hidden"></div>
+            <div className="absolute -bottom-8 right-0 w-12 h-12 lg:w-20 lg:h-20 bg-gradient-to-br from-purple-400 to-blue-400 rounded-full shadow-lg animate-pulse overflow-hidden"></div>
           </motion.div>
         </div>
       </motion.section>
@@ -475,9 +399,9 @@ const Home = () => {
     <motion.div
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
-      className="relative overflow-hidden"
+      className="relative overflow-hidden w-full"
     >
-      <div className="flex animate-marquee items-center gap-8 lg:gap-12 whitespace-nowrap">
+      <div className="flex animate-marquee items-center gap-8 lg:gap-12 whitespace-nowrap w-full">
         {Array(2)
           .fill(null)
           .map((_, idx) => (
@@ -524,25 +448,27 @@ const Home = () => {
               transition={{ duration: 0.8 }}
               className="order-2 lg:order-1"
             >
-              <div className="mb-8">
-               <h2
-  className="text-3xl lg:text-4xl font-poppins font-semibold text-global-1 mb-4"
-  style={{ letterSpacing: '-0.5px' }}
->
-  Make use of our Grant Proposal Template 
-  <span className="text-global-15"> (GPT)  </span> to effectively convey your idea. 🚀
-</h2>
+              <div className="mb-8 text-center lg:text-left">
+                <h2
+                  className="text-3xl lg:text-4xl font-poppins font-semibold text-global-1 mb-4"
+                  style={{ letterSpacing: '-0.5px' }}
+                >
+                  Make use of our Grant Proposal Template 
+                  <span className="text-global-15"> (GPT)  </span> to effectively convey your idea. 🚀
+                </h2>
 
-              <p className="text-lg lg:text-xl font-poppins font-normal text-global-1 leading-relaxed"  style={{ letterSpacing: '-0.5px' }}>
-  Say farewell to the complexities of raising funds and <br />
-  unlock a smoother path to success. Empowering you <br />
-  with real results
-</p>
-
+                <p className="text-base sm:text-xl font-poppins text-global-6 leading-relaxed mb-8 mx-auto lg:mx-0" style={{ letterSpacing: '-0.5px', maxWidth: '32rem' }}>
+                  Say farewell to the complexities of raising funds and 
+                  unlock a smoother path to success. Empowering you 
+                  with real results
+                </p>
               </div>
-              <Button className="bg-global-5 text-white font-poppins font-semibold px-8 py-3 rounded-lg hover:bg-red-600 transition-colors">
-                Talk to our AI Agent
-              </Button>
+              <div className="flex justify-center lg:justify-start">
+                <a href="/chatbot" rel="noopener noreferrer"> 
+                <Button className="bg-global-5 text-white font-poppins font-semibold px-8 py-3 rounded-lg hover:bg-red-600 transition-colors">
+                  Talk to our AI Agent
+                </Button></a>
+              </div>
             </motion.div>
            <motion.div
   initial={{ opacity: 0, x: 50 }}
@@ -707,9 +633,10 @@ const Home = () => {
                
                 
                 <div className="space-y-4">
+                  <a href="https://whatsapp.com/channel/0029VabP5ALCnA7zIjGd2w3x" rel="noopener noreferrer"> 
                   <Button className="bg-gradient-to-r from-global-5 to-red-600 text-white font-poppins font-bold px-10 py-4 rounded-2xl text-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 shadow-xl border-2 border-white/20">
                     🚀 Join Our WhatsApp Channel
-                  </Button>
+                  </Button> </a>
                   
                   <div className="flex items-center justify-center gap-8 text-white/80 text-sm font-poppins">
                     <div className="flex items-center gap-2">
@@ -859,14 +786,15 @@ const Home = () => {
               <span className="block" style={{ color: '#111' }}>Don't take our word for it.</span>
             </motion.h2>
             
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-xl font-poppins text-global-6 leading-relaxed mb-12 max-w-2xl mx-auto"
-            >
-              Discover how thousands of entrepreneurs have transformed their businesses with our grant expertise and personalized guidance.
-            </motion.p>
+           <motion.p
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.4, duration: 0.6 }}
+  className="text-base sm:text-xl font-poppins text-global-6 leading-relaxed mb-8 max-w-[700px] mx-auto"
+>
+  Discover how thousands of entrepreneurs have transformed their businesses with our grant expertise and personalized guidance.
+</motion.p>
+
           </div>
           
           {/* Testimonial Carousel */}
@@ -897,13 +825,18 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-           <h2
-  className="text-3xl lg:text-5xl font-poppins font-medium leading-tight"
-  style={{ letterSpacing: '-2px' }}
->
-  <span className="text-global-15">Still not convinced?<br /></span>
-  <span className="text-global-4">We have got the answers</span>
-</h2>
+
+             <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-4xl lg:text-6xl font-poppins font-medium leading-tight mb-8 text-global-4"
+              style={{ letterSpacing: '-2px' }}
+            >
+              <span className="block" style={{ color: '#ef3e25' }}>Still not convinced?<br /></span>
+              <span className="block" style={{ color: '#111' }}>We have got the answers</span>
+            </motion.h2>
+          
 
           </motion.div>
           
@@ -986,8 +919,8 @@ const Home = () => {
 
   <div className="text-center pt-8">
     <p className="text-lg font-be-vietnam font-medium text-global-4">
-      Still have more questions? Contact us on <span className="text-global-16">Whatsapp</span>.
-    </p>
+      Still have more questions? Contact us on <span className="text-global-16"> <a href="https://api.whatsapp.com/send/?phone=%2B919952237700&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">Whatsapp </a></span>.
+    </p> 
   </div>
 </motion.div>
 
@@ -1017,96 +950,106 @@ const Home = () => {
             className="mb-16"
           >
             <div className="inline-flex items-center gap-3 bg-white border border-purple-200 rounded-full px-6 py-2 mb-6 shadow-sm">
-              <span className="text-2xl">📱</span>
               <span className="text-global-4 font-poppins font-semibold">Stay Connected</span>
             </div>
             
-            <h2 className="text-3xl lg:text-5xl font-poppins font-bold text-global-4 leading-tight mb-6">
-              Follow our socials for<br />
-              <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">regular updates</span>
+          <h2
+  className="text-3xl lg:text-5xl font-poppins text-global-4 leading-tight mb-6"
+  style={{
+    fontWeight: 600, // SemiBold
+    letterSpacing: "-1.5px"
+  }}
+>
+
+              Follow our socials for regular updates
             </h2>
             
-            <p className="text-xl font-poppins text-global-6 leading-relaxed max-w-2xl mx-auto">
+           <p className="text-base sm:text-xl font-poppins text-global-6 leading-relaxed mb-8 max-w-[700px] mx-auto">
               Stay ahead of the funding game with daily insights, success stories, and exclusive grant opportunities.
             </p>
           </motion.div>
           
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto"
-          >
-            {/* LinkedIn Card */}
-            <motion.div
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.1 }}
-              className="group bg-white rounded-3xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
-            >
-              <div className="flex flex-col items-center text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <img 
-                    src="/images/img_image_6_yv5mo.png" 
-                    alt="LinkedIn" 
-                    className="w-10 h-10 brightness-0 invert"
-                  />
-                </div>
-                
-                <h3 className="text-2xl font-poppins font-bold text-global-4 mb-3">
-                  LinkedIn
-                </h3>
-                
-                <p className="text-global-6 font-poppins mb-6 leading-relaxed">
-                  Professional insights, industry updates, and networking opportunities
-                </p>
-                
-                <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white font-poppins font-bold px-8 py-3 rounded-2xl hover:from-blue-600 hover:to-blue-800 transition-all duration-300 shadow-lg">
-                  Follow on LinkedIn →
-                </Button>
-                
-                <div className="mt-4 flex items-center gap-2 text-sm text-global-6">
-                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                  <span>25K+ followers</span>
-                </div>
-              </div>
-            </motion.div>
-            
-            {/* Instagram Card */}
-            <motion.div
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="group bg-white rounded-3xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
-            >
-              <div className="flex flex-col items-center text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <img 
-                    src="/images/img_eaekeo4uheqguld.png" 
-                    alt="Instagram" 
-                    className="w-10 h-10 brightness-0 invert"
-                  />
-                </div>
-                
-                <h3 className="text-2xl font-poppins font-bold text-global-4 mb-3">
-                  Instagram
-                </h3>
-                
-                <p className="text-global-6 font-poppins mb-6 leading-relaxed">
-                  Behind-the-scenes content, success stories, and daily motivation
-                </p>
-                
-                <Button className="w-full bg-gradient-to-r from-pink-500 via-red-500 to-orange-500 text-white font-poppins font-bold px-8 py-3 rounded-2xl hover:from-pink-600 hover:via-red-600 hover:to-orange-600 transition-all duration-300 shadow-lg">
-                  Follow on Instagram →
-                </Button>
-                
-                <div className="mt-4 flex items-center gap-2 text-sm text-global-6">
-                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                  <span>15K+ followers</span>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
+       <motion.div
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  transition={{ delay: 0.3, duration: 0.8 }}
+  className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto"
+>
+  {/* LinkedIn Card */}
+  <motion.div
+    initial={{ y: 50, opacity: 0 }}
+    whileInView={{ y: 0, opacity: 1 }}
+    transition={{ delay: 0.1 }}
+    className="group p-8 border border-gray-100 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+  >
+    <div className="flex flex-col items-center text-center">
+      <img
+        src="/images/ld.png" // Replace with correct path or use a public URL
+        alt="LinkedIn"
+        className="w-10 h-10 mb-4"
+      />
+
+      <h3
+        className="text-2xl font-poppins text-global-4 mb-3"
+        style={{ fontWeight: 600, letterSpacing: "-1.5px" }}
+      >
+        LinkedIn
+      </h3>
+
+      <p className="text-global-6 font-poppins mb-6 leading-relaxed">
+        Professional insights, industry updates, and networking opportunities
+      </p>
+
+      <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white font-poppins font-bold px-8 py-3 rounded-2xl hover:from-blue-600 hover:to-blue-800 transition-all duration-300 shadow-lg">
+    <a href="https://www.linkedin.com/company/myprobuddy/" rel="noopener noreferrer">  Follow </a>
+      </Button> 
+
+      <div className="mt-4 flex items-center gap-2 text-sm text-global-6">
+        <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+        <span>5K+ followers</span>
+      </div>
+    </div>
+  </motion.div>
+
+  {/* Instagram Card */}
+  <motion.div
+    initial={{ y: 50, opacity: 0 }}
+    whileInView={{ y: 0, opacity: 1 }}
+    transition={{ delay: 0.2 }}
+    className="group p-8 border border-gray-100 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+  >
+    <div className="flex flex-col items-center text-center">
+      <img
+        src="/images/ig.png" // Replace with correct path or use a public URL
+        alt="Instagram"
+        className="w-10 h-10 mb-4"
+      />
+
+      <h3
+        className="text-2xl font-poppins text-global-4 mb-3"
+        style={{ fontWeight: 600, letterSpacing: "-1.5px" }}
+      >
+        Instagram
+      </h3>
+
+     <p className="text-global-6 font-poppins mb-6 leading-relaxed">
+  Founders’ fundraising stories, startup terminologies, and everything in between
+</p>
+
+
+      <Button className="w-full bg-gradient-to-r from-pink-500 via-red-500 to-orange-500 text-white font-poppins font-bold px-8 py-3 rounded-2xl hover:from-pink-600 hover:via-red-600 hover:to-orange-600 transition-all duration-300 shadow-lg">
+       <a href="https://www.instagram.com/myprobuddy/" rel="noopener noreferrer">  Follow </a> 
+      </Button>
+
+      <div className="mt-4 flex items-center gap-2 text-sm text-global-6">
+        <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+        <span>100+ followers</span>
+      </div>
+    </div>
+  </motion.div>
+</motion.div>
+
+
           
           {/* Additional Social Proof */}
           <motion.div
@@ -1147,10 +1090,20 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
+             <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-4xl lg:text-6xl font-poppins font-medium leading-tight mb-8 text-global-4"
+              style={{ letterSpacing: '-2px' }}
+            >
+              <span className="block" style={{ color: '#ef3e25' }}> Latest Blogs</span>
+            </motion.h2>
+          
             <h2 className="text-3xl lg:text-5xl font-poppins font-medium text-global-15 mb-4">
-              Latest Blogs
+             
             </h2>
-            <p className="text-lg lg:text-xl font-poppins text-global-3">
+            <p className="text-base sm:text-xl font-poppins text-global-6 leading-relaxed mb-8 max-w-[700px] mx-auto">
               Explore insights, updates, and expert tips from our latest posts on business grants.
             </p>
           </motion.div>
@@ -1160,21 +1113,25 @@ const Home = () => {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
+          > 
             {blogPosts.map((post, index) => (
               <motion.article
                 key={post.id}
                 initial={{ y: 50, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="bg-gradient-to-b from-orange-50 to-orange-50/40 border border-gray-200/20 rounded-xl p-6 hover:shadow-lg transition-shadow"
+                className="bg-gradient-to-b from-orange-50 to-orange-50/40 border border-gray-200/20 rounded-xl p-6 hover:shadow-lg transition-shadow cursor-pointer"
+                onClick={() => window.open('https://www.linkedin.com/newsletters/grants-spotlight-7321401877835730944/', '_blank')}
+                tabIndex={0}
+                onKeyPress={e => { if (e.key === 'Enter' || e.key === ' ') window.open('https://www.linkedin.com/newsletters/grants-spotlight-7321401877835730944/', '_blank'); }}
+                role="button"
+                aria-label={`Read more about ${post.title}`}
               >
                 <img 
                   src={post.image} 
                   alt={post.title} 
                   className="w-full h-40 object-cover rounded-lg mb-6"
                 />
-                
                 <div className="mb-6">
                   <h3 className="text-lg font-poppins font-medium text-global-5 mb-3 line-clamp-2">
                     {post.title}
@@ -1183,7 +1140,6 @@ const Home = () => {
                     {post.description}
                   </p>
                 </div>
-                
                 <div className="flex justify-between items-end">
                   <div>
                     <p className="text-xs font-poppins text-global-6 mb-1">
@@ -1191,7 +1147,7 @@ const Home = () => {
                     </p>
                     <div className="flex items-center gap-2">
                       <img 
-                        src="/images/img_images.png" 
+                        src="/images/5.png" 
                         alt="Author avatar" 
                         className="w-6 h-6 rounded-full"
                       />
@@ -1219,9 +1175,6 @@ const Home = () => {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-center mt-12"
           >
-            <button className="text-lg font-poppins font-semibold text-global-1 hover:text-global-15 transition-colors">
-              View All →
-            </button>
           </motion.div>
         </div>
       </motion.section>
@@ -1250,11 +1203,16 @@ const Home = () => {
                 className="p-8 lg:p-16"
               >
                 <h2 className="text-3xl lg:text-5xl font-poppins font-medium text-white leading-tight mb-8">
-                  Skyrocket your fund <br />raising goals with us.
+                  Skyrocket your fund  goals with us.
                 </h2>
-                <Button className="bg-global-5 text-white font-be-vietnam font-medium px-8 py-4 rounded-3xl shadow-lg hover:bg-red-600 transition-colors">
-                  Start now
-                </Button>
+             <Button
+  variant="ghost"
+  className="bg-[#ef3e25] text-white font-be-vietnam font-medium px-8 py-4 rounded-3xl shadow-lg hover:bg-[#ef3e25] transition-colors"     onClick={() => setShowGetStarted(true)}
+>
+  Start now
+</Button>
+
+
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, x: 50 }}

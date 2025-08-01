@@ -1,43 +1,51 @@
 import React, { useState } from 'react';
+import GetStartedPopup from './GetStartedPopup';
 import Button from '../ui/Button';
 
-const Header = () => {
+const Header = ({ darkMode }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   return (
-    <header className="w-full bg-global-11 shadow-sm border-b border-gray-100">
+    <header
+      className={`w-full shadow-sm border-b ${darkMode ? '' : 'bg-global-11 border-gray-100'}`}
+      style={darkMode ? { background: '#111', borderColor: '#111' } : {}}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4 md:py-6">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-xl md:text-2xl font-bold text-global-2 font-poppins">
-              MyProBuddy
-            </h1>
+            <a href="https://grants.myprobuddy.com" rel="noopener noreferrer" className="flex items-center">
+              {darkMode ? (
+                <img
+                  src="/images/log.png"
+                  alt="MyPitchDeck Logo"
+                  className="w-[40px] sm:w-[50px] lg:w-[60px] h-auto"
+                />
+              ) : (
+                <img
+                  src="/images/img_header_logo.png"
+                  alt="MyPitchDeck Logo"
+                  className="w-[150px] sm:w-[180px] lg:w-[230px] h-auto"
+                />
+              )}
+            </a>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            <a href="#grants" className="text-global-1 hover:text-global-15 transition-colors font-poppins font-medium text-sm">
-              Explore Grants
-            </a>
-            <a href="#experts" className="text-global-1 hover:text-global-15 transition-colors font-poppins font-medium text-sm">
-              Our Experts
-            </a>
-            <a href="#templates" className="text-global-1 hover:text-global-15 transition-colors font-poppins font-medium text-sm">
-              Grant Templates
-            </a>
-            <a href="#success" className="text-global-1 hover:text-global-15 transition-colors font-poppins font-medium text-sm">
-              Success Stories
-            </a>
-            <a href="#blog" className="text-global-1 hover:text-global-15 transition-colors font-poppins font-medium text-sm">
-              Blog
-            </a>
-          </nav>
+      
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <Button className="bg-global-5 text-global-17 font-poppins font-semibold text-sm px-6 py-2.5 rounded-lg hover:bg-red-600 transition-colors">
-              Get Started
+            <Button
+              className={
+                darkMode
+                  ? 'bg-white text-black hover:bg-[#ef3e25] font-poppins font-semibold text-xs px-4 py-1.5 rounded-md transition-colors'
+                  : 'bg-global-5 text-global-17 hover:bg-red-600 font-poppins font-semibold text-xs px-4 py-1.5 rounded-md transition-colors'
+              }
+              onClick={() => setShowPopup(true)}
+            >
+              Work with Our Experts
             </Button>
           </div>
 
@@ -47,37 +55,31 @@ const Header = () => {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
-            <svg className="w-6 h-6 text-global-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className={`w-6 h-6 ${darkMode ? 'text-white' : 'text-global-1'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
 
         {/* Mobile Navigation */}
-        <nav className={`${menuOpen ? 'block' : 'hidden'} lg:hidden pb-4 border-t border-gray-100 pt-4`}>
+        <nav className={`${menuOpen ? 'block' : 'hidden'} lg:hidden pb-4 border-t ${darkMode ? 'border-black' : 'border-gray-100'} pt-4`}>
           <div className="flex flex-col space-y-4">
-            <a href="#grants" className="text-global-1 hover:text-global-15 transition-colors font-poppins font-medium text-sm">
-              Explore Grants
-            </a>
-            <a href="#experts" className="text-global-1 hover:text-global-15 transition-colors font-poppins font-medium text-sm">
-              Our Experts
-            </a>
-            <a href="#templates" className="text-global-1 hover:text-global-15 transition-colors font-poppins font-medium text-sm">
-              Grant Templates
-            </a>
-            <a href="#success" className="text-global-1 hover:text-global-15 transition-colors font-poppins font-medium text-sm">
-              Success Stories
-            </a>
-            <a href="#blog" className="text-global-1 hover:text-global-15 transition-colors font-poppins font-medium text-sm">
-              Blog
-            </a>
             <div className="pt-2">
-              <Button className="bg-global-5 text-global-17 font-poppins font-semibold text-sm px-6 py-2.5 rounded-lg w-full">
-                Get Started
+              <Button
+                className={
+                  darkMode
+                    ? 'bg-white text-black hover:bg-[#ef3e25] font-poppins font-semibold text-sm px-6 py-2.5 rounded-lg w-full transition-colors'
+                    : 'bg-global-5 text-global-17 hover:bg-red-600 font-poppins font-semibold text-sm px-6 py-2.5 rounded-lg w-full transition-colors'
+                }
+                onClick={() => setShowPopup(true)}
+              >
+                Work with Our Experts
               </Button>
             </div>
           </div>
         </nav>
+        {/* Popup Modal for Get Started */}
+        {showPopup && <GetStartedPopup onClose={() => setShowPopup(false)} />}
       </div>
     </header>
   );
