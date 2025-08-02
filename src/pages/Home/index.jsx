@@ -470,7 +470,7 @@ const Home = () => {
         display: flex;
         width: max-content;
         gap: 34px;
-        animation: marquee 30s linear infinite;
+        animation: marquee 35s linear infinite;
       }
       @keyframes marquee {
         from { transform: translateX(0); }
@@ -596,7 +596,7 @@ const Home = () => {
         display: flex;
         width: max-content;
         gap: 34px;
-        animation: marquee 10s linear infinite;
+        animation: marquee 4s linear infinite;
       }
       @keyframes marquee {
         from { transform: translateX(0); }
