@@ -15,7 +15,7 @@ const Header = ({ darkMode }) => {
         <div className="flex justify-between items-center py-4 md:py-6">
           {/* Logo */}
           <div className="flex items-center">
-            <a href="https://grants.myprobuddy.com" rel="noopener noreferrer" className="flex items-center">
+            <a href="/" rel="noopener noreferrer" className="flex items-center">
               {darkMode ? (
                 <img
                   src="/images/log.png"

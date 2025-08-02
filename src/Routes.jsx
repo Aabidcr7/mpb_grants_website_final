@@ -6,6 +6,8 @@ import Footer from './components/common/Footer';
 // Import page components
 import HomePage from './pages/Home';
 import Chatbot from './pages/Chatbot';
+import TermsAndConditions from './pages/TermsAndConditions';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 const AppRoutes = () => {
   return (
@@ -25,6 +27,8 @@ const AppRoutes = () => {
               <main className="flex-1"><HomePage /></main>
             </>
           } />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
         <Footer />
       </div>

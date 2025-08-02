@@ -139,12 +139,12 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="https://www.myprobuddy.com/privacy-policy" className="text-gray-300 hover:text-white transition-colors">
+                <a href="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="https://www.myprobuddy.com/terms-and-conditions" className="text-gray-300 hover:text-white transition-colors">
+                <a href="/terms-and-conditions" className="text-gray-300 hover:text-white transition-colors">
                   Terms & Conditions
                 </a>
               </li>
