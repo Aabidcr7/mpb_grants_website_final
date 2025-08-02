@@ -75,6 +75,51 @@ const Home = () => {
     "What does the venture advisor do?"
   ];
 
+  // featured logos
+  const logos = [
+    { src: "/images/img_item_link_moe_logo.png", alt: "MOE Logo", className: "h-16 lg:h-20 w-auto" },
+    { src: "/images/img_item_link_without_year_04.png", alt: "Partner logo", className: "h-16 lg:h-20 w-auto" },
+    { src: "/images/img_item_link_i.png", alt: "Partner logo", className: "h-24 lg:h-28 w-auto" },
+    { src: "/images/img_item_link.png", alt: "Partner logo", className: "h-24 lg:h-28 w-auto" },
+    { src: "/images/img_item_passion_vista.png", alt: "Partner logo", className: "h-16 lg:h-20 w-auto" },
+    { src: "/images/1.png", alt: "Partner logo", className: "h-24 lg:h-28 w-auto" },
+    { src: "/images/27.png", alt: "Partner logo", className: "h-16 lg:h-20 w-auto" },
+    { src: "/images/img_item_your_story.png", alt: "Partner logo", className: "h-16 lg:h-20 w-auto" },
+    // ...other logos or repeat as needed
+  ];
+
+  // grantslogos
+  const grantLogos = [
+    { src: "/images/img_i9qywlsc1b6ywjus17ywnvsm4_jpg.png", alt: "Grant scheme" },
+    { src: "/images/img_am4wbqthohuokc0fmvkxcdfmy_jpg.png", alt: "Grant scheme" },
+    { src: "/images/img_vpudovuxqmvmycb.png", alt: "Grant scheme" },
+    { src: "/images/img_modsstcewvtn140.png", alt: "Grant scheme" },
+    { src: "/images/img_ujv2ixvaalmlltn.png", alt: "Grant scheme" },
+    { src: "/images/img_rp2fgvldibgle4w.png", alt: "Grant scheme" },
+    { src: "/images/img_rtnty8peqikugny.png", alt: "Grant scheme" },
+    { src: "/images/img_re8cxq8ouw6jeyl.png", alt: "Grant scheme" },
+    { src: "/images/8.png", alt: "Grant scheme" },
+    { src: "/images/9.png", alt: "Grant scheme" },
+    { src: "/images/10.png", alt: "Grant scheme" },
+    { src: "/images/11.png", alt: "Grant scheme" }
+    // ...add more as needed
+  ];
+
+  // reward logos 
+
+  const rewardeeLogos = [
+    { src: "/images/img_item_kexc1m12.png", alt: "Rewardee" },
+    { src: "/images/img_item_a1qfpgpi.png", alt: "Rewardee" },
+    { src: "/images/img_item_v2xwr24c.png", alt: "Rewardee" },
+    { src: "/images/img_item_6rkxlbzq.png", alt: "Rewardee" },
+    { src: "/images/img_item_agdev3xy.png", alt: "Rewardee" },
+    { src: "/images/img_item_ib9hg9ql.png", alt: "Rewardee" },
+    { src: "/images/img_item_dm74iivy.png", alt: "Rewardee" },
+    { src: "/images/img_item_xfw88mvd.png", alt: "Rewardee" },
+    { src: "/images/img_item_x7mjecan_84x112.png", alt: "Rewardee" }
+  ];
+  
+
   const blogPosts = [
     {
       id: 1,
@@ -251,52 +296,46 @@ const Home = () => {
 
 
    {/* Featured In Section */}
-  <motion.section
-         initial={{ opacity: 1 }}
-         animate={{ opacity: 1 }}
-         className="bg-white py-8 overflow-hidden"
-       >
-         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <motion.h2
-             initial={{ opacity: 1, y: 0 }}
-             animate={{ opacity: 1, y: 0 }}
-             className="text-3xl lg:text-4xl font-poppins font-bold text-center text-global-2 mb-12"
-           >
-             As Featured In
-           </motion.h2>
-           <motion.div
-             initial={{ opacity: 1 }}
-             animate={{ opacity: 1 }}
-             className="relative overflow-hidden w-full"
-           >
-             <div className="flex animate-marquee items-center gap-8 lg:gap-12 w-full">
-               <img src="/images/img_item_link_moe_logo.png" alt="MOE Logo" className="h-16 lg:h-20 w-auto" />
-               <img src="/images/img_item_link_without_year_04.png" alt="Partner logo" className="h-16 lg:h-20 w-auto" />
-               <img src="/images/img_item_link_i.png" alt="Partner logo" className="h-24 lg:h-28 w-auto" />
-<img src="/images/img_item_link.png" alt="Partner logo" className="h-24 lg:h-28 w-auto" />
+   <section className="bg-white py-8 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl lg:text-4xl font-poppins font-bold text-center text-global-2 mb-12">
+          As Featured In
+        </h2>
+        <div className="marquee">
+          <div className="marquee-track">
+            {logos.map((logo, idx) => (
+              <img key={idx} src={logo.src} alt={logo.alt} className={logo.className} />
+            ))}
+            {logos.map((logo, idx) => (
+              <img key={logos.length + idx} src={logo.src} alt={logo.alt} className={logo.className} />
+            ))}
+          </div>
+        </div>
+      </div>
 
-               <img src="/images/img_item_passion_vista.png" alt="Partner logo" className="h-16 lg:h-20 w-auto" />
-               <img src="/images/1.png" alt="Partner logo" className="h-24 lg:h-28 w-auto" />
-               <img src="/images/27.png" alt="Partner logo" className="h-16 lg:h-20 w-auto" />
-               <img src="/images/img_item_your_story.png" alt="Partner logo" className="h-16 lg:h-20 w-auto" />
-               <img src="/images/img_item_link_moe_logo.png" alt="MOE Logo" className="h-16 lg:h-20 w-auto" />
-               <img src="/images/img_item_link_without_year_04.png" alt="Partner logo" className="h-16 lg:h-20 w-auto" />
-               <img src="/images/img_item_link_i.png" alt="Partner logo" className="h-24 lg:h-28 w-auto" />
-               <img src="/images/img_item_link.png" alt="Partner logo" className="h-24 lg:h-28 w-auto" />
-               <img src="/images/img_item_passion_vista.png" alt="Partner logo" className="h-16 lg:h-20 w-auto" />
-               <img src="/images/1.png" alt="Partner logo" className="h-24 lg:h-28 w-auto" />
-               <img src="/images/27.png" alt="Partner logo" className="h-16 lg:h-20 w-auto" />
-               <img src="/images/img_item_link_moe_logo.png" alt="MOE Logo" className="h-16 lg:h-20 w-auto" />
-               <img src="/images/img_item_link_without_year_04.png" alt="Partner logo" className="h-16 lg:h-20 w-auto" />
-               <img src="/images/img_item_link_i.png" alt="Partner logo" className="h-24 lg:h-28 w-auto" />
-               <img src="/images/img_item_link.png" alt="Partner logo" className="h-24 lg:h-28 w-auto" />
-               <img src="/images/img_item_passion_vista.png" alt="Partner logo" className="h-16 lg:h-20 w-auto" />
-               <img src="/images/1.png" alt="Partner logo" className="h-24 lg:h-28 w-auto" />
-               <img src="/images/27.png" alt="Partner logo" className="h-16 lg:h-20 w-auto" />
-             </div>
-           </motion.div>
-         </div>
-       </motion.section>
+      <style>
+        {`
+          .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+          }
+          .marquee-track {
+            display: flex;
+            width: max-content;
+            gap: 34px;
+            animation: marquee 30s linear infinite;
+          }
+          @keyframes marquee {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+          }
+          .marquee-track:hover {
+            animation-play-state: paused;
+          }
+        `}
+      </style>
+    </section>
       {/* Connect and Collaborate Section - Redesigned */}
       <motion.section
         ref={connectAnimation.ref}
@@ -378,7 +417,7 @@ const Home = () => {
       </motion.section>
 
       {/* Featured In Section */}
- <motion.section
+      <motion.section
   ref={exploreAnimation.ref}
   initial="hidden"
   animate={exploreAnimation.controls}
@@ -396,34 +435,54 @@ const Home = () => {
       Explore the Top Grants and Schemes for your idea
     </motion.h2>
 
-    <motion.div
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 1 }}
-      className="relative overflow-hidden w-full"
-    >
-      <div className="flex animate-marquee items-center gap-8 lg:gap-12 whitespace-nowrap w-full">
-        {Array(2)
-          .fill(null)
-          .map((_, idx) => (
-            <React.Fragment key={idx}>
-              <img src="/images/img_i9qywlsc1b6ywjus17ywnvsm4_jpg.png" alt="Grant scheme" className="h-24 lg:h-32 w-auto max-w-[170px] object-contain hover:scale-110 transition-transform" />
-              <img src="/images/img_am4wbqthohuokc0fmvkxcdfmy_jpg.png" alt="Grant scheme" className="h-24 lg:h-32 w-auto max-w-[170px] object-contain hover:scale-110 transition-transform" />
-              <img src="/images/img_vpudovuxqmvmycb.png" alt="Grant scheme" className="h-24 lg:h-32 w-auto max-w-[170px] object-contain hover:scale-110 transition-transform" />
-              <img src="/images/img_modsstcewvtn140.png" alt="Grant scheme" className="h-24 lg:h-32 w-auto max-w-[170px] object-contain hover:scale-110 transition-transform" />
-              <img src="/images/img_ujv2ixvaalmlltn.png" alt="Grant scheme" className="h-24 lg:h-32 w-auto max-w-[170px] object-contain hover:scale-110 transition-transform" />
-              <img src="/images/img_rp2fgvldibgle4w.png" alt="Grant scheme" className="h-24 lg:h-32 w-auto max-w-[170px] object-contain hover:scale-110 transition-transform" />
-              <img src="/images/img_rtnty8peqikugny.png" alt="Grant scheme" className="h-24 lg:h-32 w-auto max-w-[170px] object-contain hover:scale-110 transition-transform" />
-              <img src="/images/img_re8cxq8ouw6jeyl.png" alt="Grant scheme" className="h-24 lg:h-32 w-auto max-w-[170px] object-contain hover:scale-110 transition-transform" />
-              <img src="/images/8.png" alt="Grant scheme" className="h-24 lg:h-32 w-auto max-w-[170px] object-contain hover:scale-110 transition-transform" />
-              <img src="/images/9.png" alt="Grant scheme" className="h-24 lg:h-32 w-auto max-w-[170px] object-contain hover:scale-110 transition-transform" />
-              <img src="/images/10.png" alt="Grant scheme" className="h-24 lg:h-32 w-auto max-w-[170px] object-contain hover:scale-110 transition-transform" />
-              <img src="/images/11.png" alt="Grant scheme" className="h-24 lg:h-32 w-auto max-w-[170px] object-contain hover:scale-110 transition-transform" />
-            </React.Fragment>
-          ))}
+    <div className="marquee">
+      <div className="marquee-track">
+        {/* One set of images */}
+        {grantLogos.map((logo, idx) => (
+          <img
+            key={idx}
+            src={logo.src}
+            alt={logo.alt}
+            className="h-24 lg:h-32 w-auto max-w-[170px] object-contain hover:scale-110 transition-transform"
+          />
+        ))}
+        {/* Duplicate set for seamless effect */}
+        {grantLogos.map((logo, idx) => (
+          <img
+            key={grantLogos.length + idx}
+            src={logo.src}
+            alt={logo.alt}
+            className="h-24 lg:h-32 w-auto max-w-[170px] object-contain hover:scale-110 transition-transform"
+          />
+        ))}
       </div>
-    </motion.div>
+    </div>
   </div>
+
+  <style>
+    {`
+      .marquee {
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+      }
+      .marquee-track {
+        display: flex;
+        width: max-content;
+        gap: 34px;
+        animation: marquee 30s linear infinite;
+      }
+      @keyframes marquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+      }
+      .marquee-track:hover {
+        animation-play-state: paused;
+      }
+    `}
+  </style>
 </motion.section>
+
 
 
 
@@ -489,58 +548,67 @@ const Home = () => {
 
       {/* Grant Rewardees Section */}
       <motion.section
-        ref={rewardeesAnimation.ref}
-        initial="hidden"
-        animate={rewardeesAnimation.controls}
-        variants={rewardeesAnimation.animations}
-        transition={{ duration: 0.8 }}
-        className="bg-global-2 py-16"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl lg:text-4xl font-poppins font-bold text-center text-white mb-12"
-          >
-            Learn more about the Grant Rewardees
-          </motion.h2>
-      <motion.div
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 1 }}
-        className="relative overflow-hidden"
-      >
-   <div className="flex animate-marquee items-center gap-8 lg:gap-12 whitespace-nowrap">
-  {Array(2)
-    .fill(null)
-    .map((_, idx) => (
-      <React.Fragment key={idx}>
-        {[
-          "img_item_kexc1m12",
-          "img_item_a1qfpgpi",
-          "img_item_v2xwr24c",
-          "img_item_6rkxlbzq",
-          "img_item_agdev3xy",
-          "img_item_ib9hg9ql",
-          "img_item_dm74iivy",
-          "img_item_xfw88mvd",
-          "img_item_x7mjecan_84x112",
-        ].map((img, i) => (
+  ref={rewardeesAnimation.ref}
+  initial="hidden"
+  animate={rewardeesAnimation.controls}
+  variants={rewardeesAnimation.animations}
+  transition={{ duration: 0.8 }}
+  className="bg-global-2 py-16"
+>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <motion.h2
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="text-3xl lg:text-4xl font-poppins font-bold text-center text-white mb-12"
+    >
+      Learn more about the Grant Rewardees
+    </motion.h2>
+    <div className="marquee">
+      <div className="marquee-track">
+        {rewardeeLogos.map((logo, idx) => (
           <img
-            key={i}
-            src={`/images/${img}.png`}
-            alt="Rewardee"
+            key={idx}
+            src={logo.src}
+            alt={logo.alt}
             className="w-20 h-20 lg:w-24 lg:h-24 object-contain hover:scale-110 transition-transform"
           />
         ))}
-      </React.Fragment>
-    ))}
-</div>
+        {rewardeeLogos.map((logo, idx) => (
+          <img
+            key={rewardeeLogos.length + idx}
+            src={logo.src}
+            alt={logo.alt}
+            className="w-20 h-20 lg:w-24 lg:h-24 object-contain hover:scale-110 transition-transform"
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+  <style>
+    {`
+      .marquee {
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+      }
+      .marquee-track {
+        display: flex;
+        width: max-content;
+        gap: 34px;
+        animation: marquee 10s linear infinite;
+      }
+      @keyframes marquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+      }
+      .marquee-track:hover {
+        animation-play-state: paused;
+      }
+    `}
+  </style>
+</motion.section>
 
-      </motion.div>
-
-        </div>
-      </motion.section>
 
       {/* Comprehensive Grant Report Section - Background Image Removed */}
       <motion.section
