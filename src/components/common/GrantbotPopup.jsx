@@ -64,7 +64,7 @@ import React, { useState, useEffect } from 'react';
                   transition={{ delay: 0.5 }}
                   className="space-y-4"
                 >
-                  <a href="/chatbot" rel="noopener noreferrer"> 
+                  <a href="https://grantsbot.myprobuddy.com/" rel="noopener noreferrer"> 
                   <Button
                     onClick={handleAskGrantbot}
                     className="w-full bg-gradient-to-r from-global-5 to-red-600 text-white font-poppins font-bold py-4 px-8 rounded-xl text-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 shadow-lg"
