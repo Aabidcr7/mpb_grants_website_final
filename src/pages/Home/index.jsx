@@ -523,7 +523,7 @@ const Home = () => {
                 </p>
               </div>
               <div className="flex justify-center lg:justify-start">
-                <a href="/chatbot" rel="noopener noreferrer"> 
+                <a href="https://grantsbot.myprobuddy.com/" rel="noopener noreferrer"> 
                 <Button className="bg-global-5 text-white font-poppins font-semibold px-8 py-3 rounded-lg hover:bg-red-600 transition-colors">
                   Talk to our AI Agent
                 </Button></a>
